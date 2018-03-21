@@ -1,5 +1,7 @@
 package com.example.demo.entity;
 
+import lombok.Data;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,8 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import lombok.Data;
 
 @Data
 @Entity
@@ -23,12 +23,8 @@ public class City {
     @Column(name = "name")
     private String name;
 
-//    @Column(name = "country_id")
-//    private Long countryId;
-
     @ManyToOne
     @JoinColumn(name = "country_id")
     private Country country;
-
 
 }

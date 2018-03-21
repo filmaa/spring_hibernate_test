@@ -1,7 +1,7 @@
 package com.example.demo.entity;
 
 
-import java.util.Set;
+import lombok.Data;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,8 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import lombok.Data;
+import java.util.Set;
 
 @Data
 @Entity
@@ -27,7 +26,7 @@ public class Country {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "city", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "country", cascade = CascadeType.ALL)
     private Set<City> city;
 
     public Country(String name) {
