@@ -1,6 +1,5 @@
 package com.example.demo.entity;
 
-import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,9 +12,8 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(schema = "people_storage", name = "person")
-public class Person implements Serializable {
-
+@Table(schema = "people_storage", name = "country")
+public class Country {
     @Id
     @Column(name = "id", columnDefinition = "bigserial")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,15 +22,10 @@ public class Person implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "surname")
-    private String surname;
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "city", cascade = CascadeType.ALL)
+//    private Set<City> city;
 
-    @Column(name = "address")
-    private String address;
-
-    public Person(String name, String surname, String address) {
+    public Country(String name) {
         this.name = name;
-        this.surname = surname;
-        this.address = address;
     }
 }

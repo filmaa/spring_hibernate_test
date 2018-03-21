@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface PersonRepository extends CrudRepository<Person, Long> {
@@ -16,4 +17,7 @@ public interface PersonRepository extends CrudRepository<Person, Long> {
 
     @Query(value = "SELECT p FROM Person p WHERE p.name = :name", nativeQuery = true)
     List<Person> findPersons(@Param("name") String name);
+
+    Optional<Person> findById(Long id);
+
 }

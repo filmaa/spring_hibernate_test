@@ -1,6 +1,10 @@
 package com.example.demo;
 
+import com.example.demo.entity.City;
+import com.example.demo.entity.Country;
 import com.example.demo.entity.Person;
+import com.example.demo.repository.CityRepository;
+import com.example.demo.repository.CountryRepository;
 import com.example.demo.repository.PersonRepository;
 
 import org.junit.Assert;
@@ -18,6 +22,10 @@ public class DemoApplicationTests {
 
     @Autowired
     private PersonRepository personRepository;
+    @Autowired
+    private CityRepository cityRepository;
+    @Autowired
+    private CountryRepository countryRepository;
 
     @Test
     public void contextLoads() {
@@ -35,5 +43,21 @@ public class DemoApplicationTests {
     public void findPersons() {
         List<Person> persons = personRepository.findPersons("testName");
         Assert.assertFalse(persons.isEmpty());
+    }
+
+    @Test
+    public void findCityByName() {
+        List<City> cities = cityRepository.findByName("London");
+    }
+
+    @Test
+    public void addCity() {
+//        City city = new City("London");
+
+    }
+
+    @Test
+    public void addCountry() {
+        countryRepository.save(new Country("GB"));
     }
 }
