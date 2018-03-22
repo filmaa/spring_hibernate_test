@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.entity.TestWithoutSequence;
 import com.example.demo.repository.TestWithoutSequenceRepository;
 
 import org.junit.Test;
@@ -17,7 +18,7 @@ public class TableWithoutSequenceTest {
 
     @Test
     public void saveEntity() {
-//        TestWithoutSequence entity = new TestWithoutSequence("name");
-//        testWithoutSequenceRepository.save(entity);
+        TestWithoutSequence entity = new TestWithoutSequence("name");
+        testWithoutSequenceRepository.save(entity);
     }
 }
