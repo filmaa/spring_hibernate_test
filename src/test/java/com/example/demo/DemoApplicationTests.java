@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -64,10 +65,20 @@ public class DemoApplicationTests {
 
     @Test
     public void getCitiesByCountry() {
-//        todo
         Country country = countryRepository.findByName("GB").get(0);
         List<City> cities = country.getCity();
-        System.out.println(country.toString());
+        List<String> citiesNames = new ArrayList<>();
+        for (City city : cities) {
+            citiesNames.add(city.getName());
+        }
+        System.out.println(citiesNames);
+    }
+
+    @Test
+    public void getCountryByCity() {
+        List<City> london = cityRepository.findByName("London");
+        Country country = london.get(0).getCountry();
+        System.out.println(country.getName());
     }
 
 

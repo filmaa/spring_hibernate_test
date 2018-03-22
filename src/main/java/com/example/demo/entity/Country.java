@@ -33,7 +33,7 @@ public class Country implements Serializable{
     @Column(name = "name")
     private String name;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "country", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "country", cascade = CascadeType.ALL)
     private List<City> city;
 
     public Country(String name) {
