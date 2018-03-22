@@ -1,7 +1,8 @@
 package com.example.demo.entity;
 
 
-import java.util.Set;
+import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -20,7 +21,10 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @Table(schema = "people_storage", name = "country")
-public class Country {
+public class Country implements Serializable{
+
+    private static final long serialVersionUID = 1L;
+
     @Id
     @Column(name = "id", columnDefinition = "bigserial")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,7 +34,7 @@ public class Country {
     private String name;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "country", cascade = CascadeType.ALL)
-    private Set<City> city;
+    private List<City> city;
 
     public Country(String name) {
         this.name = name;

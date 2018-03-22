@@ -20,6 +20,8 @@ import lombok.NoArgsConstructor;
 @Table(schema = "people_storage", name = "person")
 public class Person implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
     @Id
     @Column(name = "id", columnDefinition = "bigserial")
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -27,6 +27,7 @@ public class DemoApplicationTests {
     @Autowired
     private CountryRepository countryRepository;
 
+
     @Test
     public void contextLoads() {
         Person person = new Person("testName1", "testSurname1", "testAddress1");
@@ -45,7 +46,7 @@ public class DemoApplicationTests {
         Assert.assertFalse(persons.isEmpty());
     }
 
-        @Test
+    @Test
     public void findCityByName() {
         List<City> cities = cityRepository.findByName("London");
     }
@@ -58,7 +59,16 @@ public class DemoApplicationTests {
 
     @Test
     public void addCountry() {
-        countryRepository.save(new Country("GB"));
+        countryRepository.save(new Country("Belarus"));
     }
+
+    @Test
+    public void getCitiesByCountry() {
+//        todo
+        Country country = countryRepository.findByName("GB").get(0);
+        List<City> cities = country.getCity();
+        System.out.println(country.toString());
+    }
+
 
 }
