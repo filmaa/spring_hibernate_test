@@ -13,12 +13,14 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
+
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+//@Transactional
 public class DemoApplicationTests {
 
     @Autowired
@@ -27,7 +29,8 @@ public class DemoApplicationTests {
     private CityRepository cityRepository;
     @Autowired
     private CountryRepository countryRepository;
-
+//    @Autowired
+//    private SessionFactory sessionFactory;
 
     @Test
     public void contextLoads() {
@@ -64,14 +67,18 @@ public class DemoApplicationTests {
     }
 
     @Test
+    @Transactional
     public void getCitiesByCountry() {
+//        Session session = sessionFactory.openSession();
+
         Country country = countryRepository.findByName("GB").get(0);
         List<City> cities = country.getCity();
-        List<String> citiesNames = new ArrayList<>();
+//        List<String> citiesNames = new ArrayList<>();
         for (City city : cities) {
-            citiesNames.add(city.getName());
+            System.out.println(city.getName() + " ");
         }
-        System.out.println(citiesNames);
+//        System.out.println(cities.get(0).getCountry());
+//        session.close();
     }
 
     @Test
